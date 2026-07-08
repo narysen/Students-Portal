@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview - Students Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 flex flex-col md:flex-row">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-64 bg-white border-r border-gray-200 flex flex-col justify-between shrink-0">
+        <div class="p-5">
+            <!-- HEADER WITH FACULTY LOGO IMAGE -->
+            <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-100">
+                <img src="Rupp_logo.png" alt="Faculty of Engineering Logo" class="w-10 h-10 object-contain rounded-lg">
+                <div>
+                    <h4 class="font-extrabold text-sm text-blue-900 leading-tight">Faculty of Engineering</h4>
+                    <p class="text-xs font-semibold text-gray-500">Students Portal</p>
+                </div>
+            </div>
+            <nav class="space-y-1">
+                <a href="overview.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium bg-blue-600 text-white transition-all">
+                    <i class="fa-solid fa-chart-pie w-5"></i> <span>Profile info</span>
+                </a>
+                <!--a href="courses.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-all">
+                    <i class="fa-solid fa-book-open w-5"></i> <span>Course and Enrollment</span>
+                </a-->
+                <a href="results.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-all">
+                    <i class="fa-solid fa-graduation-cap w-5"></i> <span>Academic Results</span>
+                </a>
+                <!--a href="setting.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-all">
+                    <i class="fa-solid fa-gear w-5"></i> <span>Setting</span>
+                </a--->
+            </nav>
+        </div>
+    </aside>
+
+    <!-- MAIN FULL SCREEN WORKSPACE -->
+    <main class="flex-1 p-6 md:p-8">
+        <div class="space-y-6">
+            <h1 class="text-2xl font-black text-gray-800 tracking-wide">Welcome, Sen Nary!</h1>
+            
+            <!-- Quick Stat Counters Block >
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
+                    <div class="p-3 bg-blue-100 text-blue-600 rounded-lg"><i class="fa-solid fa-star text-xl"></i></div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-400 uppercase">GPA Result</p>
+                        <p class="text-2xl font-black text-gray-800">3.5</p>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
+                    <div class="p-3 bg-green-100 text-green-600 rounded-lg"><i class="fa-solid fa-user-check text-xl"></i></div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-400 uppercase">Attendance</p>
+                        <p class="text-2xl font-black text-gray-800">100%</p>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
+                    <div class="p-3 bg-purple-100 text-purple-600 rounded-lg"><i class="fa-solid fa-calendar-days text-xl"></i></div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-400 uppercase">Enrollment</p>
+                        <p class="text-base font-bold text-gray-800">29/Jan/2025</p>
+                    </div>
+                </div>
+            </div-->
+
+            <!-- PROFILE AREA -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div class="p-5 bg-gray-50 border-b border-gray-100 font-bold text-gray-700 tracking-wide text-sm uppercase">Your Profile</div>
+                
+                <div class="p-6 space-y-6">
+                    
+                    <!-- AVATAR HEADER -->
+                    <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-5 p-5 bg-gray-50 rounded-xl border border-gray-100">
+                        <div onclick="document.getElementById('overview-avatar-input').click()" class="w-20 h-20 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 text-white flex items-center justify-center text-2xl font-black shadow-md overflow-hidden cursor-pointer relative group shrink-0">
+                            <img id="overview-avatar-img" class="w-full h-full object-cover hidden" alt="Avatar">
+                            <span id="overview-avatar-initials">SN</span>
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded-full">
+                                <i class="fa-solid fa-camera text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <input type="file" id="overview-input" accept="image/*" class="hidden" onchange="uploadAvatar(this)">
+                        
+                        <div class="text-center sm:text-left">
+                            <h2 class="text-2xl font-black text-gray-800 tracking-wide">Sen Nary</h2>
+                            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mt-0.5">ID: 000000123456</p>
+                            <p class="text-xs font-semibold text-gray-400 uppercase mt-0.5">Department of Information Technology Engineering</p>
+                        </div>
+                    </div>
+
+                    <!-- CLEANED & STRUCTURAL PERSONAL DETAILS SECTION -->
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Personal Details Information</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <!-- Date of Birth -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-cake-candles"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Date of Birth</span>
+                                    <span class="text-sm font-bold text-gray-800">06 October 2007</span>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-venus-mars"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Gender</span>
+                                    <span class="text-sm font-bold text-gray-800">Female</span>
+                                </div>
+                            </div>
+
+                            <!-- Department -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-building-user"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Department</span>
+                                    <span class="text-sm font-bold text-gray-800">Information Technology Engineering (ITE)</span>
+                                </div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Phone Number</span>
+                                    <span class="text-sm font-bold text-gray-800">015 479 408</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Address -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100 md:col-span-2">
+                                <div class="text-blue-500 w-5 text-center"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="break-all">
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Institutional Email</span>
+                                    <span class="text-sm font-bold text-blue-600">sen.nary.2824@rupp.edu.kh</span>
+                                </div>
+                            </div>
+
+                            <!-- Current Address -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100 md:col-span-2">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Current Address</span>
+                                    <span class="text-sm font-bold text-gray-800">Ou Baek K'am, Saensokh, Phnom Penh</span>
+                                </div>
+                            </div>
+
+                            <!-- Enrollment Date -->
+                            <div class="flex items-center space-x-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-100 md:col-span-2">
+                                <div class="text-gray-400 w-5 text-center"><i class="fa-solid fa-calendar-check"></i></div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide">Official Enrollment Date</span>
+                                    <span class="text-sm font-bold text-gray-800">29 January 2025</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AVATAR ENGINE LOGIC -->
+    <script>
+        function loadAvatar() {
+            const savedImage = localStorage.getItem('student_avatar');
+            const overviewImg = document.getElementById('overview-avatar-img');
+            const overviewTxt = document.getElementById('overview-avatar-initials');
+            
+            if (savedImage) {
+                overviewImg.src = savedImage;
+                overviewImg.classList.remove('hidden');
+                overviewTxt.classList.add('hidden');
+            } else {
+                overviewImg.classList.add('hidden');
+                overviewTxt.classList.remove('hidden');
+            }
+        }
+
+        function uploadAvatar(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    localStorage.setItem('student_avatar', e.target.result);
+                    loadAvatar();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadAvatar);
+    </script>
+</body>
+</html>

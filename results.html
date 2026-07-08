@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Results - Students Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 flex flex-col md:flex-row">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-64 bg-white border-r border-gray-200 flex flex-col shrink-0">
+        <div class="p-5 md:sticky md:top-0">
+            <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-100">
+                <img src="Rupp_logo.png" alt="Faculty of Engineering Logo" class="w-10 h-10 object-contain rounded-lg">
+                <div>
+                    <h4 class="font-extrabold text-sm text-blue-900 leading-tight">Faculty of Engineering</h4>
+                    <p class="text-xs font-semibold text-gray-500">Students Portal</p>
+                </div>
+            </div>
+            <nav class="space-y-1">
+                <a href="overview.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-all">
+                    <i class="fa-solid fa-chart-pie w-5"></i> <span>Overview</span>
+                </a>
+                <a href="results.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg font-medium bg-blue-600 text-white transition-all">
+                    <i class="fa-solid fa-graduation-cap w-5"></i> <span>Academic Results</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="flex-1 p-6 md:p-8 space-y-8 overflow-y-auto">
+        
+        <!-- TOP SUMMARY CARD -->
+        <div class="bg-blue-900 text-white p-6 rounded-xl shadow-md flex justify-between items-center">
+            <div>
+                <p class="text-sm opacity-80 font-medium uppercase tracking-wider">Cumulative Grade Point Average (CGPA)</p>
+                <!-- DYNAMIC OVERALL CGPA DISPLAY -->
+                <h2 id="overall-cgpa" class="text-3xl font-black mt-1">Calculating...</h2>
+            </div>
+            <div class="text-sm font-bold bg-white/20 px-3 py-1.5 rounded-lg border border-white/10">All Semesters</div>
+        </div>
+
+        <!-- ==================== YEAR 1 ==================== -->
+        <div class="space-y-6">
+            <h3 class="text-xl font-black text-blue-900 border-b-2 border-blue-900/10 pb-2">Year 1</h3>
+
+            <!-- Year 1 Semester I -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden semester-block">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+                    <span class="font-bold text-gray-700">Semester I</span>
+                    <!-- DYNAMIC SEMESTER GPA DISPLAY -->
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md sem-gpa-badge">GPA: --</span>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs font-bold text-gray-500 uppercase border-b border-gray-200">
+                            <th class="p-4">Subject</th>
+                            <th class="p-4 text-center">Credit</th>
+                            <th class="p-4 text-center">Grade</th>
+                            <th class="p-4 text-right">Hours (L - P - S)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm font-semibold text-gray-700">
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Mathematics I</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Computer Fundamental</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Physics</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Civilization</td>
+                            <td class="p-4 text-center data-credit">1.5</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">History</td>
+                            <td class="p-4 text-center data-credit">1.5</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Critical Thinking & Personal Development</td>
+                            <td class="p-4 text-center data-credit">2.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Academic skill</td>
+                            <td class="p-4 text-center data-credit">2.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded font-bold data-letter">C+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">General English I</td>
+                            <td class="p-4 text-center data-credit">4.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(4-0)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Year 1 Semester II -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden semester-block">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+                    <span class="font-bold text-gray-700">Semester II</span>
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md sem-gpa-badge">GPA: --</span>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs font-bold text-gray-500 uppercase border-b border-gray-200">
+                            <th class="p-4">Subject</th>
+                            <th class="p-4 text-center">Credit</th>
+                            <th class="p-4 text-center">Grade</th>
+                            <th class="p-4 text-right">Hours (L - P - S)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm font-semibold text-gray-700">
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Mathematics II</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Technical Drawing</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Basic Programming Language</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Introduction to statistics</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Introduction to electrical Engineering</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded font-bold data-letter">C+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(2-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Philosophy</td>
+                            <td class="p-4 text-center data-credit">1.5</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Sociology</td>
+                            <td class="p-4 text-center data-credit">1.5</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">General English II</td>
+                            <td class="p-4 text-center data-credit">4.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(4-0)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== YEAR 2 ==================== -->
+        <div class="space-y-6">
+            <h3 class="text-xl font-black text-blue-900 border-b-2 border-blue-900/10 pb-2">Year 2</h3>
+
+            <!-- Year 2 Semester I -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden semester-block">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+                    <span class="font-bold text-gray-700">Semester I</span>
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md sem-gpa-badge">GPA: --</span>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs font-bold text-gray-500 uppercase border-b border-gray-200">
+                            <th class="p-4">Subject</th>
+                            <th class="p-4 text-center">Credit</th>
+                            <th class="p-4 text-center">Grade</th>
+                            <th class="p-4 text-right">Hours (L - P - S)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm font-semibold text-gray-700">
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Advanced Programming Language I</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Data Structure and Algorithm I</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Data Communication</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Probability and Statistics</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Mathematic III</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">General English III</td>
+                            <td class="p-4 text-center data-credit">4.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(4-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Project Practicum</td>
+                            <td class="p-4 text-center data-credit">1.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(0-4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Year 2 Semester II -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden semester-block">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+                    <span class="font-bold text-gray-700">Semester II</span>
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md sem-gpa-badge">GPA: --</span>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs font-bold text-gray-500 uppercase border-b border-gray-200">
+                            <th class="p-4">Subject</th>
+                            <th class="p-4 text-center">Credit</th>
+                            <th class="p-4 text-center">Grade</th>
+                            <th class="p-4 text-right">Hours (L - P - S)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm font-semibold text-gray-700">
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Advance Programming Language II</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-green-100 text-green-800 rounded font-bold data-letter">B+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Data Structure and Algorithm</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded font-bold data-letter">C+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Data Communication</td>
+                            <td class="p-4 text-center data-credit">3.0</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Database I</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(1.5-2)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Discrete Math</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(3-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">General English IV</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold data-letter">A</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(4-0)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50 transition-colors course-row">
+                            <td class="p-4 font-bold">Project Practicum</td>
+                            <td class="p-4 text-center"><span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded font-bold data-letter">C+</span></td>
+                            <td class="p-4 text-right font-mono text-gray-600">(0-4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== YEAR 3 ==================== -->
+        <div class="space-y-6">
+            <h3 class="text-xl font-black text-gray-400 border-b-2 border-gray-200 pb-2">Year 3</h3>
+            <div class="bg-gray-50 rounded-xl border border-dashed border-gray-300 p-8 text-center shadow-sm">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-blue-600 mb-3">
+                    <i class="fa-solid fa-lock text-lg"></i>
+                </div>
+                <h4 class="text-sm font-bold text-gray-700">Upcoming Semesters</h4>
+                <p class="text-xs text-gray-400 mt-1">Curriculum scheduling parameters for Year 3 will unlock upon completion of active terms.</p>
+            </div>
+        </div>
+
+        <!-- ==================== YEAR 4 ==================== -->
+        <div class="space-y-6">
+            <h3 class="text-xl font-black text-gray-400 border-b-2 border-gray-200 pb-2">Year 4</h3>
+            <div class="bg-gray-50 rounded-xl border border-dashed border-gray-300 p-8 text-center shadow-sm">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 text-gray-400 mb-3">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                </div>
+                <h4 class="text-sm font-bold text-gray-500">Upcoming Semesters</h4>
+                <p class="text-xs text-gray-400 mt-1">Terminal registration parameters remain locked until senior year activation.</p>
+            </div>
+        </div>
+
+        <!-- GRADING SCALE INFORMATION -->
+        <div class="bg-gray-100 p-4 rounded-xl border border-gray-200 text-xs text-gray-500 space-y-1">
+            <p>Class metrics calculated dynamically based on Faculty credit allocation parameters. Hours layout denotes Lectures (L), Practicals (P), and Seminar/Self-Study (S).</p>
+        </div>
+    </main>
+
+    <!-- CALCULATOR SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // RUPP Standard Grading Scale Mapping
+            const gradePoints = {
+                'A': 4.0, 'B+': 3.5, 'B': 3.0, 'C+': 2.5, 'C': 2.0, 'D': 1.5, 'F': 0.0
+            };
+
+            let totalWeightedPoints = 0;
+            let totalOverallCredits = 0;
+
+            // Find all semester containers
+            const semesterBlocks = document.querySelectorAll(".semester-block");
+
+            semesterBlocks.forEach(block => {
+                let semesterWeightedPoints = 0;
+                let semesterTotalCredits = 0;
+
+                // Loop through rows inside this single semester block
+                const rows = block.querySelectorAll(".course-row");
+                rows.forEach(row => {
+                    const creditElement = row.querySelector(".data-credit");
+                    const letterElement = row.querySelector(".data-letter");
+
+                    if (creditElement && letterElement) {
+                        const credits = parseFloat(creditElement.innerText.trim());
+                        const letterGrade = letterElement.innerText.trim();
+                        const points = gradePoints[letterGrade] !== undefined ? gradePoints[letterGrade] : 0.0;
+
+                        semesterWeightedPoints += (points * credits);
+                        semesterTotalCredits += credits;
+                    }
+                });
+
+                // Calculate and inject this individual Semester's GPA
+                if (semesterTotalCredits > 0) {
+                    const semesterGPA = semesterWeightedPoints / semesterTotalCredits;
+                    const badge = block.querySelector(".sem-gpa-badge");
+                    if (badge) {
+                        badge.innerText = `GPA: ${semesterGPA.toFixed(2)}`;
+                    }
+
+                    // Accumulate into overall college record numbers
+                    totalWeightedPoints += semesterWeightedPoints;
+                    totalOverallCredits += semesterTotalCredits;
+                }
+            });
+
+            // Calculate and inject the top overall Cumulative GPA (CGPA)
+            if (totalOverallCredits > 0) {
+                const globalCGPA = totalWeightedPoints / totalOverallCredits;
+                document.getElementById("overall-cgpa").innerText = globalCGPA.toFixed(2);
+            } else {
+                document.getElementById("overall-cgpa").innerText = "0.00";
+            }
+        });
+    </script>
+</body>
+</html>

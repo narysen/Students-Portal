@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Students Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen w-full flex flex-col justify-between p-8 relative overflow-x-hidden select-none" 
+      style="background: radial-gradient(circle, rgba(235,248,255,1) 0%, rgba(181,228,249,1) 55%, rgba(142,211,241,1) 100%);">
+
+    <!-- TOP LOGO HEADER AREA -->
+    <header class="flex items-center space-x-6 z-10">
+        <img src="rupp_logo.png" alt="University Logo" class="w-24 h-24 object-contain drop-shadow-sm" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/b/b3/Royal_University_of_Phnom_Penh_seal.png'">
+    </header>
+
+    <!-- MAIN BODY SECTION split into two columns -->
+    <main class="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 my-auto px-4 z-10">
+        
+        <!-- Left Column: Big bold title text -->
+        <div class="w-full lg:w-1/2 text-left">
+            <h1 class="text-4xl md:text-5xl lg:text-[3.45rem] font-black tracking-tight text-black uppercase leading-[1.15]">
+                Students<br>
+                Management<br>
+                System for<br>
+                Education
+            </h1>
+        </div>
+
+        <!-- Right Column: Login form inputs and action controls -->
+        <div class="w-full lg:w-[500px] flex flex-col space-y-5">
+            <form onsubmit="handleLogin(event)" class="space-y-5">
+                
+                <!-- Email Input Container Field -->
+                <div class="relative w-full">
+                    <input type="email" id="email" required placeholder="Enter your Email:"
+                        class="w-full h-14 px-6 text-lg font-bold bg-white text-black border-2 border-black rounded-full placeholder-black outline-none shadow-sm focus:ring-2 focus:ring-blue-400 transition-all">
+                </div>
+
+                <!-- Password Input Container Field -->
+                <div class="relative w-full">
+                    <input type="password" id="password" required placeholder="password:"
+                        class="w-full h-14 px-6 text-lg font-bold bg-white text-black border-2 border-black rounded-full placeholder-black outline-none shadow-sm focus:ring-2 focus:ring-blue-400 transition-all">
+                </div>
+
+                <!-- Log In Action Submission Trigger Wrapper -->
+                <div class="pt-2 flex flex-col items-center">
+                    <button type="submit" 
+                        class="w-64 h-14 bg-[#08415c] hover:bg-[#052e42] border-2 border-black rounded-full text-white text-lg font-bold tracking-wide shadow-md transition duration-150 active:scale-95">
+                        Log in
+                    </button>
+                    
+                    <a href="overview.html" class="mt-4 text-black text-base font-bold underline decoration-1 underline-offset-4 hover:text-blue-900 transition-colors">
+                        Log in as Student?
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <!-- SUCCESS STUDENT INFORMATION MODAL (Populates dynamically based on login) -->
+    <div id="info-modal" class="hidden fixed inset-0 bg-gray-900/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-gray-100 text-center space-y-4 transform scale-100 transition-all">
+            <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto text-2xl border border-green-100">
+                <i class="fa-solid fa-circle-check animate-bounce"></i>
+            </div>
+            
+            <div>
+                <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Access Granted</span>
+                <h3 class="text-xl font-black text-gray-800 tracking-wide mt-2">Welcome Back!</h3>
+            </div>
+
+            <!-- Profile Info Card Container -->
+            <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-left space-y-1">
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Student Information</p>
+                <h4 id="modal-student-name" class="text-base font-bold text-gray-800">-</h4>
+                <p class="text-xs text-gray-600 font-medium">ID: <span id="modal-student-id" class="font-mono">-</span></p>
+                <p id="modal-student-dept" class="text-[11px] text-blue-600 font-bold uppercase mt-1">-</p>
+            </div>
+
+            <p class="text-xs text-gray-400 font-medium">Loading academic portal dashboard...</p>
+        </div>
+    </div>
+
+    <footer class="h-8"></footer>
+
+    <!-- ADMIN DATABASE ENGINE SCRIPT -->
+    <script>
+        // Simulated Database controlled by the Administrator
+        const adminStudentDatabase = [
+            {
+                email: "sen.nary.2824@rupp.edu.kh",
+                password: "AdminGivenPassword123", // Secure password given by admin
+                name: "Sen Nary",
+                id: "000000123456",
+                department: "Department of Information Technology Engineering"
+            }
+        ];
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('email').value.trim();
+            const passwordInput = document.getElementById('password').value;
+
+            // Search the database for matching admin credentials
+            const matchedStudent = adminStudentDatabase.find(
+                student => student.email === emailInput && student.password === passwordInput
+            );
+
+            if (matchedStudent) {
+                // Fill modal dynamically with the verified data
+                document.getElementById('modal-student-name').innerText = matchedStudent.name;
+                document.getElementById('modal-student-id').innerText = matchedStudent.id;
+                document.getElementById('modal-student-dept').innerText = matchedStudent.department;
+
+                // Show information modal
+                document.getElementById('info-modal').classList.remove('hidden');
+
+                // Redirect after loading complete
+                setTimeout(() => {
+                    window.location.href = "overview.html";
+                }, 2500);
+            } else {
+                alert("❌ Authentication Failed!\nIncorrect username or password. Please use the password provided by your Department Administrator.");
+            }
+        }
+    </script>
+</body>
+</html>
