@@ -10,16 +10,12 @@
 <body class="min-h-screen w-full flex flex-col justify-between p-8 relative overflow-x-hidden select-none" 
       style="background: radial-gradient(circle, rgba(235,248,255,1) 0%, rgba(181,228,249,1) 55%, rgba(142,211,241,1) 100%);">
 
-    <!-- TOP LOGO HEADER AREA -->
     <header class="flex items-center space-x-6 z-10">
         <img src="rupp_logo.png" alt="University Logo" class="w-24 h-24 object-contain drop-shadow-sm" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/b/b3/Royal_University_of_Phnom_Penh_seal.png'">
     </header>
 
-    <!-- MAIN BODY SECTION split into two columns -->
     <main class="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 my-auto px-4 z-10">
-        
-        <!-- Left Column: Big bold title text -->
-        <div class="w-full lg:w-1/2 text-left">
+                <div class="w-full lg:w-1/2 text-left">
             <h1 class="text-4xl md:text-5xl lg:text-[3.45rem] font-black tracking-tight text-black uppercase leading-[1.15]">
                 Students<br>
                 Management<br>
@@ -28,23 +24,18 @@
             </h1>
         </div>
 
-        <!-- Right Column: Login form inputs and action controls -->
         <div class="w-full lg:w-[500px] flex flex-col space-y-5">
             <form onsubmit="handleLogin(event)" class="space-y-5">
-                
-                <!-- Email Input Container Field -->
                 <div class="relative w-full">
                     <input type="email" id="email" required placeholder="Enter your Email:"
                         class="w-full h-14 px-6 text-lg font-bold bg-white text-black border-2 border-black rounded-full placeholder-black outline-none shadow-sm focus:ring-2 focus:ring-blue-400 transition-all">
                 </div>
 
-                <!-- Password Input Container Field -->
                 <div class="relative w-full">
                     <input type="password" id="password" required placeholder="Password:"
                         class="w-full h-14 px-6 text-lg font-bold bg-white text-black border-2 border-black rounded-full placeholder-black outline-none shadow-sm focus:ring-2 focus:ring-blue-400 transition-all">
                 </div>
 
-                <!-- Log In Action Submission Trigger Wrapper -->
                 <div class="pt-2 flex flex-col items-center">
                     <button type="submit" 
                         class="w-64 h-14 bg-[#08415c] hover:bg-[#052e42] border-2 border-black rounded-full text-white text-lg font-bold tracking-wide shadow-md transition duration-150 active:scale-95">
@@ -61,10 +52,8 @@
 
     </main>
 
-    <!-- LOADING REDIRECT MODAL -->
     <div id="info-modal" class="hidden fixed inset-0 bg-gray-900/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-xs w-full p-6 shadow-2xl border-2 border-black text-center space-y-3 transform scale-100 transition-all">
-            <!-- Simple clean spinning loader icon -->
             <div class="text-3xl text-[#08415c]">
                 <i class="fa-solid fa-circle-notch animate-spin"></i>
             </div>
@@ -77,33 +66,22 @@
 
     <footer class="h-8"></footer>
 
-    <!-- ADMIN DATABASE ENGINE SCRIPT -->
     <script>
-        // Default data set by Admin
-        const defaultEmail = "sen.nary.2824@rupp.edu.kh";
-        const defaultPassword = "AdminGivenPassword123";
-
         function handleLogin(event) {
             event.preventDefault();
             
             const emailInput = document.getElementById('email').value.trim();
-            const passwordInput = document.getElementById('password').value;
+            const passwordInput = document.getElementById('password').value.trim();
+            const activeEmail = "sen.nary.2824@rupp.edu.kh";
+            const activePassword = "student123"; 
 
-            const activeEmail = localStorage.getItem('student_email') || defaultEmail;
-            const activePassword = defaultPassword; 
-
-            // Validate user credentials
             if (emailInput === activeEmail && passwordInput === activePassword) {
-                
-                // Show clean loading modal spinner
                 document.getElementById('info-modal').classList.remove('hidden');
-
-                // Redirect user directly over to your form file
                 setTimeout(() => {
                     window.location.href = "form.html";
                 }, 1500);
             } else {
-                alert("Authentication Failed!\nIncorrect username or password. Please use your active student account credentials.");
+                alert("Authentication Failed!\nIncorrect username or password. Please check your credentials.");
             }
         }
     </script>
