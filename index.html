@@ -40,7 +40,7 @@
 
                 <!-- Password Input Container Field -->
                 <div class="relative w-full">
-                    <input type="password" id="password" required placeholder="password:"
+                    <input type="password" id="password" required placeholder="Password:"
                         class="w-full h-14 px-6 text-lg font-bold bg-white text-black border-2 border-black rounded-full placeholder-black outline-none shadow-sm focus:ring-2 focus:ring-blue-400 transition-all">
                 </div>
 
@@ -51,7 +51,7 @@
                         Log in
                     </button>
                     
-                    <a href="overview.html" class="mt-4 text-black text-base font-bold underline decoration-1 underline-offset-4 hover:text-blue-900 transition-colors">
+                    <a href="terms.html" class="mt-4 text-black text-base font-bold underline decoration-1 underline-offset-4 hover:text-blue-900 transition-colors">
                         Log in as Student?
                     </a>
                 </div>
@@ -61,27 +61,17 @@
 
     </main>
 
-    <!-- SUCCESS STUDENT INFORMATION MODAL (Populates dynamically based on login) -->
+    <!-- LOADING REDIRECT MODAL -->
     <div id="info-modal" class="hidden fixed inset-0 bg-gray-900/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-gray-100 text-center space-y-4 transform scale-100 transition-all">
-            <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto text-2xl border border-green-100">
-                <i class="fa-solid fa-circle-check animate-bounce"></i>
+        <div class="bg-white rounded-2xl max-w-xs w-full p-6 shadow-2xl border-2 border-black text-center space-y-3 transform scale-100 transition-all">
+            <!-- Simple clean spinning loader icon -->
+            <div class="text-3xl text-[#08415c]">
+                <i class="fa-solid fa-circle-notch animate-spin"></i>
             </div>
-            
             <div>
-                <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Access Granted</span>
-                <h3 class="text-xl font-black text-gray-800 tracking-wide mt-2">Welcome Back!</h3>
+                <h3 class="text-lg font-black text-black tracking-wide">Logging in...</h3>
+                <p class="text-xs text-gray-500 font-bold mt-1">Opening profile setup records.</p>
             </div>
-
-            <!-- Profile Info Card Container -->
-            <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-left space-y-1">
-                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Student Information</p>
-                <h4 id="modal-student-name" class="text-base font-bold text-gray-800">-</h4>
-                <p class="text-xs text-gray-600 font-medium">ID: <span id="modal-student-id" class="font-mono">-</span></p>
-                <p id="modal-student-dept" class="text-[11px] text-blue-600 font-bold uppercase mt-1">-</p>
-            </div>
-
-            <p class="text-xs text-gray-400 font-medium">Loading academic portal dashboard...</p>
         </div>
     </div>
 
@@ -89,16 +79,9 @@
 
     <!-- ADMIN DATABASE ENGINE SCRIPT -->
     <script>
-        // Simulated Database controlled by the Administrator
-        const adminStudentDatabase = [
-            {
-                email: "sen.nary.2824@rupp.edu.kh",
-                password: "AdminGivenPassword123", // Secure password given by admin
-                name: "Sen Nary",
-                id: "000000123456",
-                department: "Department of Information Technology Engineering"
-            }
-        ];
+        // Default data set by Admin
+        const defaultEmail = "sen.nary.2824@rupp.edu.kh";
+        const defaultPassword = "AdminGivenPassword123";
 
         function handleLogin(event) {
             event.preventDefault();
@@ -106,26 +89,21 @@
             const emailInput = document.getElementById('email').value.trim();
             const passwordInput = document.getElementById('password').value;
 
-            // Search the database for matching admin credentials
-            const matchedStudent = adminStudentDatabase.find(
-                student => student.email === emailInput && student.password === passwordInput
-            );
+            const activeEmail = localStorage.getItem('student_email') || defaultEmail;
+            const activePassword = defaultPassword; 
 
-            if (matchedStudent) {
-                // Fill modal dynamically with the verified data
-                document.getElementById('modal-student-name').innerText = matchedStudent.name;
-                document.getElementById('modal-student-id').innerText = matchedStudent.id;
-                document.getElementById('modal-student-dept').innerText = matchedStudent.department;
-
-                // Show information modal
+            // Validate user credentials
+            if (emailInput === activeEmail && passwordInput === activePassword) {
+                
+                // Show clean loading modal spinner
                 document.getElementById('info-modal').classList.remove('hidden');
 
-                // Redirect after loading complete
+                // Redirect user directly over to your form file
                 setTimeout(() => {
-                    window.location.href = "overview.html";
-                }, 2500);
+                    window.location.href = "form.html";
+                }, 1500);
             } else {
-                alert("❌ Authentication Failed!\nIncorrect username or password. Please use the password provided by your Department Administrator.");
+                alert("Authentication Failed!\nIncorrect username or password. Please use your active student account credentials.");
             }
         }
     </script>
